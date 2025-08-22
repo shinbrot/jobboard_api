@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'services/job_board_api_service.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Job Board App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Job Board - Freelance Platform'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final JobBoardApiService _apiService = JobBoardApiService();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.work,
+              size: 100,
+              color: Colors.deepPurple,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to Job Board',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Freelance Platform Mini',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+            SizedBox(height: 40),
+            Text(
+              'Features:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            SizedBox(height: 10),
+            ListTile(
+              leading: Icon(Icons.post_add, color: Colors.green),
+              title: Text('Post Jobs/Services'),
+            ),
+            ListTile(
+              leading: Icon(Icons.apply_to_jobs, color: Colors.blue),
+              title: Text('Apply for Jobs'),
+            ),
+            ListTile(
+              leading: Icon(Icons.chat, color: Colors.orange),
+              title: Text('Simple Chat System'),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // TODO: Navigate to job list screen
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Job list screen will be implemented next!'),
+            ),
+          );
+        },
+        tooltip: 'View Jobs',
+        child: const Icon(Icons.list),
+      ),
+    );
+  }
+}
