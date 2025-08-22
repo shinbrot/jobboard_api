@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/job_list_screen.dart';
 import 'services/job_board_api_service.dart';
 
 void main() {
@@ -90,11 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: Navigate to job list screen
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Job list screen will be implemented next!'),
-            ),
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const JobListScreen()),
           );
         },
         tooltip: 'View Jobs',
