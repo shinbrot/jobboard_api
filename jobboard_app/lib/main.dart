@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'services/job_board_api_service.dart';
 
 void main() {
@@ -32,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final JobBoardApiService _apiService = JobBoardApiService();
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Post Jobs/Services'),
             ),
             ListTile(
-              leading: Icon(Icons.apply_to_jobs, color: Colors.blue),
+              leading: Icon(Icons.assignment, color: Colors.blue),
               title: Text('Apply for Jobs'),
             ),
             ListTile(
